@@ -4,7 +4,7 @@
 #include <float.h>
 
 /* Precision asked for */
-#define EPSILON 0.00001
+#define EPSILON 0.0001
 
 /* Solve f(x) = x^2 + 10cosx with fixed-point method */
 

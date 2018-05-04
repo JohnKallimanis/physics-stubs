@@ -227,7 +227,7 @@ void rk_solve_free_fall(double angle, double time_step, double in_vel, plane *p)
     l4 = time_step*ver_dvdt(p->y.t[i] + time_step, p->y.y[i] + k3, p->y.v[i] + l3);
     
     p->y.y[i+1] = p->y.y[i] + (1.0/6.0)*(k1+2*k2+2*k3+k4);
-    p->y.v[i+1] = p->y.v[i] + (1.0/6.0)*(k1+2*k2+2*k3+k4);
+    p->y.v[i+1] = p->y.v[i] + (1.0/6.0)*(l1+2*l2+2*l3+l4);
 
     /* Horizontal Position and Velocity */
     k1 = time_step*hor_dydt(p->x.t[i], p->x.y[i], p->x.v[i]);
@@ -243,7 +243,7 @@ void rk_solve_free_fall(double angle, double time_step, double in_vel, plane *p)
     l4 = time_step*hor_dvdt(p->x.t[i] + time_step, p->x.y[i] + k3, p->x.v[i] + l3);
     
     p->x.y[i+1] = p->x.y[i] + (1.0/6.0)*(k1+2*k2+2*k3+k4);
-    p->x.v[i+1] = p->x.v[i] + (1.0/6.0)*(k1+2*k2+2*k3+k4);
+    p->x.v[i+1] = p->x.v[i] + (1.0/6.0)*(l1+2*l2+2*l3+l4);
 
     if(i==p->x.size)
 	return;

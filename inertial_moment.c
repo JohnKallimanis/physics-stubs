@@ -40,9 +40,7 @@ int main()
     steps++;
     I = sotn_integrate(&g, 0, 3, steps);
   }while((PRECISION/I > 0.01) || PRECISION == 0);
-  printf("sotn_integrate Moment of Inertia from 0 to 3 with %d steps: I = %f +/- %f \%\n", steps, I, 100*PRECISION/I);
-
-  
+  printf("sotn_integrate Moment of Inertia from 0 to 3 with %d steps: I = %f +/- %f \%\n", steps, I, 100*PRECISION/I);  
   
   return 0;
 }
@@ -74,11 +72,8 @@ double deriv_maximize(double (*f)(), unsigned int order, double a, double b, dou
 
   int i;
   for(c=deriv(f, a, precision, order),i=1;a<b;++i,a+=i*precision)
-    {
-      /*    puts("foo");*/
     if(f(a)>c)
       c=deriv(f, a, precision, order);
-    }
 
   return c;
 }
@@ -131,7 +126,6 @@ double sot_integrate(double (*f)(), double start, double end, unsigned int steps
 
   /* Estimate precision */
   PRECISION = fabs(deriv_maximize(f, 4, start, end, H)*pow(h,4)*(end - start)/2880.0);
-
   return I;
 }
 
